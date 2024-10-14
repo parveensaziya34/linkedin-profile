@@ -1,0 +1,15 @@
+/* src/app/index.module.css */
+.container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .carouselContainer {
+    margin-top: 20px;
+  }
+  
+  .mobileContainer {
+    text-align: center;
+    padding: 10px;
+  }
+  

@@ -1,0 +1,140 @@
+
+
+   .carouselContainer {
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    border: 2px solid orange;
+  }
+  
+  .title {
+    font-size: 44px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-right: 700px;
+  }
+  
+  .sliderWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profileSlider {
+    width: 50%;
+  }
+  
+  .card {
+   
+    text-align: center;
+    transition: transform 0.3s, filter 0.3s;
+    margin: 0 2px; /* Reduce the margin between cards */
+  }
+  
+  .imageContainer {
+    margin-bottom: 10px;
+  }
+  
+  .profileImage {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  
+  .testimonialText {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+    width: 260px;
+    color: black;
+  }
+  
+  .testimonialText p {
+    margin-bottom: 5px;
+  }
+  
+  .counselingButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .counselingButton:hover {
+    background-color: #e65b00;
+  }
+  
+  .arrowNext,
+  .arrowPrev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #f7d0b5;
+    color: white;
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrowNext {
+    right: 10px;
+  }
+  
+  .arrowPrev {
+    left: 10px;
+  }
+  
+  /* Styles for active and inactive cards */
+  .activeCard {
+    transform: scale(1.1);
+    filter: none;
+  }
+  
+  .inactiveCard {
+    filter: blur(5px); /* Increase blur */
+    transform: scale(0.9);
+  }
+  .phoneMockup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: fill;
+  width: 330px;
+  height: 450px;
+  margin-bottom: -70px;
+  border: 16px solid black; /* Mobile border */
+  border-radius: 36px; /* Rounded corners for the border */
+  background-color: #f9f9f9; /* Background color for the phone */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  }
+  
+  .phoneContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .word{
+    color: brown;
+  }
+  
+  .counselingButton {
+    margin-top: 20px; /* Space above the button */
+    margin-left: 70px;
+    margin-right: 990px;
+  }
+ 
+ 
