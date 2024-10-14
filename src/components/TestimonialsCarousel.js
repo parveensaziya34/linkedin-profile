@@ -1,134 +1,146 @@
-'use client';
+"use client"; // Ensure it's a Client Component
 
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import Image from 'next/image';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useState } from "react";
+import Slider from "react-slick";
+import Image from "next/image";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import styles from './TestimonialsCarousel.module.css';
 
 const testimonials = [
   {
     id: 1,
     name: "Girish Chonde",
     ss: "/gri.jpg",
-    image: "/h.jpeg"
+    image: "/h.jpeg",
   },
   {
     id: 2,
     name: "Amrit Kalani",
     ss: "/amrit.jpg",
-    image: "/amritk.jpg"
+    image: "/amritk.jpg",
   },
   {
     id: 3,
     name: "Satyanarayan Mohapatra",
-    ss:"/st1.jpg",
-    image: "/st.jpg"
+    ss: "/st1.jpg",
+    image: "/st.jpg",
   },
   {
     id: 4,
     name: "Sohel Parvez Mallick",
-    ss:"/sohel.jpg",
-    image: "/sohel1.jpg"
+    ss: "/sohel.jpg",
+    image: "/sohel1.jpg",
   },
   {
     id: 5,
     name: "Soniya Sharma",
-    ss:"/soniya1.jpg",
-    image: "/soniya.jpg"
+    ss: "/soniya1.jpg",
+    image: "/soniya.jpg",
   },
   {
     id: 6,
     name: "Komal Maurya",
-    ss:"/km1.jpg",
-    image: "/km.jpg"
-  }
+    ss: "/km1.jpg",
+    image: "/km.jpg",
+  },
 ];
 
 const TestimonialsCarousel = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // Track the active (centered) testimonial
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Set 3 images in view
+    slidesToShow: 5,
     slidesToScroll: 1,
-    centerMode: true, // Center the middle image
-    centerPadding: '0px',
-    nextArrow: <NextArrow />, // Use renamed component
-    prevArrow: <PrevArrow />, // Use renamed component
-    beforeChange: (current, next) => setActiveIndex(next), // Update the activeIndex when the slider changes
+    centerMode: true,
+    centerPadding: "0px",
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    beforeChange: (current, next) => setActiveIndex(next),
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   const getSlideClass = (index) => {
     if (index === activeIndex) {
-      return styles.activeCard; // Centered (highlighted) image
+      return "scale-105 opacity-100 blur-0";
     } else {
-      return styles.inactiveCard; // Other images
+      return "scale-90 opacity-50 blur-sm";
     }
   };
 
   return (
-    <div className={styles.carouselContainer}>
-      <h2 className={styles.title}>
-        In<i className={styles.word}>sider glimpses:</i> Click to see real 
+    <div className="max-w-4xl mx-auto px-4 py-6 border-2 mt-8 border-orange-500 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-semibold text-left mt-12">
+        In<i className="font-bold text-red-500">sider glimpses:</i> Click to see real
         <div>conversations with our learners</div>
       </h2>
-
-      <div className={styles.sliderWrapper}>
-        {/* Profile Images Carousel */}
-        <Slider {...settings} className={styles.profileSlider}>
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.id}
-              className={`${styles.card} ${getSlideClass(index)}`}
-            >
-              <div className={styles.imageContainer}>
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={80}
-                  height={80}
-                  className={styles.profileImage}
-                />
+      <div className="relative flex flex-col md:flex-row items-center justify-center">
+        <div className="w-full md:w-2/3">
+          <Slider {...settings}>
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className={`p-1 transition-transform transform duration-500 ease-in-out ${getSlideClass(index)}`}
+              >
+                <div className="w-28 h-28 mx-auto">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={112}
+                    height={112}
+                    className="rounded-full"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-
-        {/* Right-side Phone Mockup */}
-        <div className={styles.phoneMockup}>
-          <div className={styles.phoneContent}>
+            ))}
+          </Slider>
+        </div>
+        <div className="w-full md:w-1/3 mt-8 md:mt-0 md:ml-10">
+          <div className="bg-gray-200 rounded-[30px] p-4 flex justify-center border-8 border-black shadow-lg">
             <Image
               src={testimonials[activeIndex].ss}
               alt={testimonials[activeIndex].name}
               width={300}
               height={500}
-              className={styles.phoneImage}
+              className="rounded-lg"
             />
           </div>
         </div>
       </div>
-
-      <button className={styles.counselingButton}>
+      <button className="mt-8 px-6 py-3 bg-orange-600 text-white font-semibold rounded-md block hover:bg-indigo-700 transition">
         Free Career Counseling from Experts
       </button>
     </div>
   );
 };
 
-// Custom Arrow Components
-const NextArrow = (props) => {
-  const { onClick } = props;
-  return <div className={styles.arrowNext} onClick={onClick}><IoIosArrowForward style={{ fontSize: '40px' }}/></div>;
-};
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute right-2 md:right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+    onClick={onClick}
+  >
+    <IoIosArrowForward />
+  </div>
+);
 
-const PrevArrow = (props) => {
-  const { onClick } = props;
-  return <div className={styles.arrowPrev} onClick={onClick}><IoIosArrowBack style={{ fontSize: '40px' }}/></div>;
-};
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute left-2 md:left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+    onClick={onClick}
+  >
+    <IoIosArrowBack />
+  </div>
+);
 
 export default TestimonialsCarousel;
