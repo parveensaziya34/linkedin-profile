@@ -24,25 +24,25 @@ const testimonials = [
     id: 3,
     name: "Satyanarayan Mohapatra",
     ss: "/st1.jpg",
-    image: "/st.jpg",
+    image: "/dp.jpg",
   },
   {
     id: 4,
     name: "Sohel Parvez Mallick",
     ss: "/sohel.jpg",
-    image: "/sohel1.jpg",
+    image: "/es.jpg",
   },
   {
     id: 5,
     name: "Soniya Sharma",
     ss: "/soniya1.jpg",
-    image: "/soniya.jpg",
+    image: "/mp.jpg",
   },
   {
     id: 6,
     name: "Komal Maurya",
     ss: "/km1.jpg",
-    image: "/km.jpg",
+    image: "/kl.jpg",
   },
 ];
 
@@ -56,16 +56,24 @@ const TestimonialsCarousel = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: "0px",
+    centerPadding: "4px",
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setActiveIndex(next),
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 768, // Tablet or mobile screens
         settings: {
-          slidesToShow: 1,
-          centerMode: false,
+          slidesToShow: 3,
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 640, // Mobile screens
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerMode: true, 
         },
       },
     ],
@@ -93,7 +101,7 @@ const TestimonialsCarousel = () => {
                 key={testimonial.id}
                 className={`p-1 transition-transform transform duration-500 ease-in-out ${getSlideClass(index)}`}
               >
-                <div className="w-28 h-28 mx-auto">
+                <div className="w-28 h-28 sm:w-24 sm:h-24 p-2 mx-auto sm:mx-6"> {/* Adjust size and gap for mobile */}
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
