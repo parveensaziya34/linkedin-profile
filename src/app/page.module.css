@@ -1,15 +1,39 @@
 /* src/app/index.module.css */
-.container {
+/* .container {
     padding: 20px;
     text-align: center;
   }
   
   .carouselContainer {
     margin-top: 20px;
+
   }
+
+  @media only screen and (max-width: 768px) {
+    .mobileContainer {
+        text-align: center;
+        padding: 10px;
+    }
   
   .mobileContainer {
     text-align: center;
     padding: 10px;
-  }
-  
+    height: auto;
+  } */
+  .container {
+    padding: 20px;
+    text-align: center;
+}
+
+.carouselContainer {
+    margin-top: 20px;
+}
+
+/* Mobile View (below 768px) */
+@media only screen and (max-width: 768px) {
+    .mobileContainer {
+        text-align: center;
+        padding: 10px;
+        height: auto; /* This ensures the height adjusts automatically */
+    }
+}
