@@ -1,3 +1,5 @@
+
+
 // "use client";
 
 // import React, { useState } from "react";
@@ -12,7 +14,7 @@
 //     id: 1,
 //     name: "Girish Chonde",
 //     ss: "/gris.jpg",
-//     image: "/h.jpeg",
+//     image: "/h2.jpg",
 //   },
 //   {
 //     id: 2,
@@ -53,10 +55,10 @@
 //     dots: false,
 //     infinite: true,
 //     speed: 500,
-//     slidesToShow: 5,
+//     slidesToShow: 5, // Show all images on desktop
 //     slidesToScroll: 1,
-//     centerMode: true,
-//     centerPadding: "0px",
+//     centerMode: true, // Enable center mode to highlight the centered image
+//     centerPadding: "0px", // No padding to the sides
 //     nextArrow: <NextArrow />,
 //     prevArrow: <PrevArrow />,
 //     beforeChange: (current, next) => setActiveIndex(next),
@@ -64,53 +66,54 @@
 //       {
 //         breakpoint: 768,
 //         settings: {
-//           slidesToShow: 3,
+//           slidesToShow: 5, // Show all images on tablets
+//           slidesToScroll: 1,
 //           centerMode: true,
 //         },
 //       },
 //       {
 //         breakpoint: 640,
 //         settings: {
-//           slidesToShow: 3,
+//           slidesToShow: 4, // Show all images on mobile
 //           slidesToScroll: 1,
 //           centerMode: true,
-//           centerPadding: "0px",
+//           centerPadding: "90px",
 //         },
 //       },
 //     ],
 //   };
 
 //   const getSlideClass = (index) => {
-//     if (index === activeIndex) {
-//       return "scale-105 opacity-100 blur-0";
-//     } else {
-//       return "scale-90 opacity-50 blur-sm";
-//     }
+//     return index === activeIndex
+//       ? "scale-105 opacity-100" // Active image styles
+//       : "scale-90 opacity-50 filter brightness-75"; // Dim non-active images
 //   };
 
 //   return (
-//     <div className="max-w-4xl mx-auto px-4 py-6 border-2 mt-8 border-orange-500 rounded-lg shadow-lg">
-//       <h2 class="max-w-[600px] mx-auto text-base sm:text-2xl md:text-4xl font-semibold mt-12 text-left ml-0">
-//         <span class="inline md:inline-block text-[32px]">
-//           In<i class="font-bold text-orange-600">sider glimpses:</i>
+//     <div className="max-w-6xl mx-auto px-4 py-1 border-2 mt-12 border-orange-500 rounded-lg bg-[rgba(211,211,211,0.3)] shadow-lg">
+//       <h2 className="max-w-[600px] mx-auto text-base sm:text-2xl md:text-4xl font-semibold text-left ml-0 mt-12">
+//         <span className="inline md:inline-block text-[20px] md:text-[40px]">
+//           In<i className="font-bold text-orange-600">sider glimpses:</i>
 //         </span>
-//         <span class="block md:inline text-[12px] md:text-[40px] mt-2 md:mt-0">
+//         <span className="block md:inline text-[12px] md:text-[40px] mt-0 md:mt-0">
 //           Click to see real conversations with our learners
 //         </span>
-//
 //       </h2>
 
-//       <div className="relative flex flex-col md:flex-row items-center justify-center">
+//       {/* Main Slider Section */}
+//       <div className="relative flex flex-col md:flex-row items-center justify-center md:overflow-hidden overflow-hidden left-0">
 //         <div className="w-full md:w-2/3">
 //           <Slider {...settings}>
 //             {testimonials.map((testimonial, index) => (
 //               <div
 //                 key={testimonial.id}
-//                 className={`p-1 transition-transform transform duration-500 ease-in-out ${getSlideClass(
+//                 className={`p-2 transition-transform transform duration-500 ease-in-out ${getSlideClass(
 //                   index
 //                 )}`}
 //               >
-//                 <div className="w-24 h-24 sm:w-28 sm:h-28 p-2 mx-auto sm:mx-6">
+//                 {/* Profile images with responsive sizing */}
+//                 <div className="w-18 h-18 sm:w-28 sm:h-28 mx-auto overflow-hidden">
+//                   {/* Increased sizes */}
 //                   <Image
 //                     src={testimonial.image}
 //                     alt={testimonial.name}
@@ -124,8 +127,9 @@
 //           </Slider>
 //         </div>
 
-//         <div className="w-full flex justify-center mt-8 md:mt-0">
-//           <div className="w-full sm:w-3/4 md:w-60 lg:w-72 h-auto rounded-2xl flex justify-center">
+//         {/* Secondary Image Section */}
+//         <div className="w-full flex justify-center mt-2 md:mt-0 overflow-hidden">
+//           <div className="w-full sm:w-3/4 md:w-60 lg:w-72 h-auto rounded-2xl flex justify-center overflow-hidden">
 //             <Image
 //               src={testimonials[activeIndex].ss}
 //               alt={testimonials[activeIndex].name}
@@ -137,7 +141,8 @@
 //         </div>
 //       </div>
 
-//       <button className="flex center mt-2 px-4 py-3 bg-orange-600 text-white font-semibold rounded-md block hover:bg-indigo-700 transition">
+//       {/* CTA Button */}
+//       <button className="mt-2 mb-4 px-4 py-3 bg-orange-600 text-white font-semibold rounded-md block hover:bg-indigo-700 transition mx-auto md:mx-0">
 //         Free Career Counseling from Experts
 //       </button>
 //     </div>
@@ -146,7 +151,7 @@
 
 // const NextArrow = ({ onClick }) => (
 //   <div
-//     className="absolute right-2 md:right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+//     className="absolute right-0 md:right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10 bg-orange-100 rounded-2xl overflow-hidden"
 //     onClick={onClick}
 //   >
 //     <IoIosArrowForward />
@@ -155,7 +160,7 @@
 
 // const PrevArrow = ({ onClick }) => (
 //   <div
-//     className="absolute left-2 md:left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+//     className="absolute left-0 md:left-1 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10 bg-orange-100 rounded-2xl overflow-hidden"
 //     onClick={onClick}
 //   >
 //     <IoIosArrowBack />
@@ -163,11 +168,10 @@
 // );
 
 // export default TestimonialsCarousel;
-"use client";
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
@@ -215,23 +219,22 @@ const testimonials = [
 
 const TestimonialsCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sliderRef = useRef(null); // Reference to the slider
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5, // Show all images on desktop
+    slidesToShow: 5,
     slidesToScroll: 1,
-    centerMode: true, // Enable center mode to highlight the centered image
-    centerPadding: "0px", // No padding to the sides
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    centerMode: true,
+    centerPadding: "0px",
     beforeChange: (current, next) => setActiveIndex(next),
     responsive: [
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 5, // Show all images on tablets
+          slidesToShow: 5,
           slidesToScroll: 1,
           centerMode: true,
         },
@@ -239,9 +242,10 @@ const TestimonialsCarousel = () => {
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 5, // Show all images on mobile
+          slidesToShow: 4,
           slidesToScroll: 1,
           centerMode: true,
+          centerPadding: "40px",
         },
       },
     ],
@@ -249,27 +253,26 @@ const TestimonialsCarousel = () => {
 
   const getSlideClass = (index) => {
     return index === activeIndex
-      ? "scale-105 opacity-100 blur-0" // Active image styles
-      : "scale-90 opacity-50 blur-sm"; // Blurred images
+      ? "scale-105 opacity-100"
+      : "scale-90 opacity-50 filter brightness-75";
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6 border-2 mt-8 border-orange-500 rounded-lg shadow-lg bg-[rgba(211,211,211,0.3)]">
-      <h2 className="max-w-[600px] mx-auto text-base sm:text-2xl md:text-4xl font-semibold mt-12 text-left ml-0">
+    <div className="relative max-w-6xl mx-auto px-4 py-1 border-2 mt-12 border-orange-500 rounded-lg bg-[rgba(211,211,211,0.3)] shadow-lg">
+      <h2 className="max-w-[600px] mx-auto text-base sm:text-2xl md:text-4xl font-semibold text-left ml-0 mt-12">
         <span className="inline md:inline-block text-[20px] md:text-[40px]">
-          In
-          <span className="font-bold text-orange-600 text-[20px] md:text-[40px]">
-            sider glimpses: 
-          </span>
+          In<i className="font-bold text-orange-600">sider glimpses:</i>
         </span>
-        <span className="block md:inline text-[12px] md:text-[40px] md:mt-0">
-           Click to see real conversations with our learners
+        <span className="block md:inline text-[12px] md:text-[40px] mt-0 md:mt-0">
+          Click to see real conversations with our learners
         </span>
       </h2>
 
-      <div className="relative flex flex-col md:flex-row items-center justify-center">
-        <div className="w-full md:w-2/3">
-          <Slider {...settings}>
+      {/* Slider Container */}
+      <div className="relative flex flex-col md:flex-row items-center justify-center overflow-hidden">
+        <div className="w-full md:w-2/3 relative">
+          {/* Assign slider reference */}
+          <Slider {...settings} ref={sliderRef}>
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
@@ -278,9 +281,7 @@ const TestimonialsCarousel = () => {
                 )}`}
               >
                 {/* Profile images with responsive sizing */}
-                <div className="w-16 h-16 sm:w-28 sm:h-28 p-2 mx-auto">
-                  {" "}
-                  {/* Increased sizes */}
+                <div className="w-18 h-18 sm:w-28 sm:h-28 mx-auto overflow-hidden">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -292,9 +293,13 @@ const TestimonialsCarousel = () => {
               </div>
             ))}
           </Slider>
+
+          {/* Control Arrows */}
+          <PrevArrow onClick={() => sliderRef.current.slickPrev()} />
+          <NextArrow onClick={() => sliderRef.current.slickNext()} />
         </div>
 
-        <div className="w-full flex justify-center mt-8 md:mt-0">
+        <div className="w-full flex justify-center mt-2 md:mt-0 overflow-hidden">
           <div className="w-full sm:w-3/4 md:w-60 lg:w-72 h-auto rounded-2xl flex justify-center">
             <Image
               src={testimonials[activeIndex].ss}
@@ -307,7 +312,7 @@ const TestimonialsCarousel = () => {
         </div>
       </div>
 
-      <button className="flex center mt-2 px-4 py-3 bg-orange-600 text-white font-semibold rounded-md block hover:bg-indigo-700 transition">
+      <button className="mt-2 mb-4 px-4 py-3 bg-orange-600 text-white font-semibold rounded-md block hover:bg-indigo-700 transition mx-auto md:mx-0">
         Free Career Counseling from Experts
       </button>
     </div>
@@ -316,7 +321,7 @@ const TestimonialsCarousel = () => {
 
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute right-2 md:right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+    className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-20 bg-orange-100 rounded-2xl"
     onClick={onClick}
   >
     <IoIosArrowForward />
@@ -325,7 +330,7 @@ const NextArrow = ({ onClick }) => (
 
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute left-2 md:left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-10"
+    className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-3xl text-gray-600 z-20 bg-orange-100 rounded-2xl"
     onClick={onClick}
   >
     <IoIosArrowBack />
